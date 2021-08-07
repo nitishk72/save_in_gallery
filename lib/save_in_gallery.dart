@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:typed_data';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 class ImageSaver {
@@ -17,9 +16,9 @@ class ImageSaver {
   /// [directoryName] is optional directory name. If [null] then saves in default directory
   /// Returns [true] if successfully saved, [false] if failed or user cancelled action
   Future<bool> saveImage({
-    @required Uint8List imageBytes,
-    String imageName,
-    String directoryName,
+    required Uint8List imageBytes,
+    String? imageName,
+    String? directoryName,
   }) async {
     try {
       final bool result = await _platform.invokeMethod(
@@ -41,8 +40,8 @@ class ImageSaver {
   /// Returns [true] if all images were successfully saved, [false] if any failed or user cancelled action
   /// [directoryName] is optional directory name. If [null] then saves in default directory
   Future<bool> saveImages({
-    @required List<Uint8List> imageBytes,
-    String directoryName,
+    required List<Uint8List> imageBytes,
+    String? directoryName,
   }) async {
     assert(
       imageBytes != null && imageBytes.isNotEmpty,
@@ -68,8 +67,8 @@ class ImageSaver {
   /// [directoryName] is optional directory name. If [null] then saves in default directory
   /// Returns [true] if all images were successfully saved, [false] if any failed or user cancelled action
   Future<bool> saveNamedImages({
-    @required Map<String, Uint8List> namedImageBytes,
-    String directoryName,
+    required Map<String, Uint8List> namedImageBytes,
+    String? directoryName,
   }) async {
     assert(
       namedImageBytes != null && namedImageBytes.isNotEmpty,
